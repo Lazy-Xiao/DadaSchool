@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DadaSchool</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="anim">test</string>
+    <string name="cat_bottom_nav_alarm">Alarm</string>
+    <string name="cat_bottom_nav_clock">Clock</string>
+    <string name="cat_bottom_nav_timer">Timer</string>
+    <string name="cat_bottom_nav_stopwatch">Stopwatch</string>
+</resources>

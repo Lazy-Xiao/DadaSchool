@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="首页" android:id="@+id/homeFragment" android:icon="@mipmap/shouye1"/>
+    <item android:title="" android:id="@+id/noticeFragment" android:icon="@null"/>
+    <item android:title="我的" android:id="@+id/meFragment" android:icon="@mipmap/wode"/>
+</menu>

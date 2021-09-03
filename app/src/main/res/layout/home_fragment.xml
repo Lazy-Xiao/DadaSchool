@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homevm"
+            type="com.lzy.dadaschool.fragment.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_700"
+        android:paddingTop="60dp"
+        tools:context=".fragment.home.HomeFragment">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/homeimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:adjustViewBounds="true"
+            android:elevation="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/homeimage" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="学校服务："
+            android:textColor="@color/title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/homeimage"
+            app:layout_constraintTop_toBottomOf="@+id/homeimage" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homecardview"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:checkable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/navigationbg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="成绩查询"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@mipmap/wuliannan" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="15dp"
+                    tools:layout_editor_absoluteY="14dp">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/homecardview2"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:checkable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/homeimage"
+            app:layout_constraintStart_toEndOf="@+id/homecardview"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/card2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="考场查询"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/shapeableImageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="95dp"
+                    android:layout_marginRight="-8dp"
+                    android:layout_marginBottom="-8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@mipmap/boniu" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="15dp"
+                    tools:layout_editor_absoluteY="14dp">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="下一节课："
+            android:textColor="@color/title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/homeimage"
+            app:layout_constraintTop_toBottomOf="@+id/homecardview" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homerecyclerview2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

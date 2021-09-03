@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<variable
+    name="logindata"
+    type="com.lzy.dadaschool.activity.login.LoginModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_700"
+        tools:context=".activity.login.LoginActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
+            android:src="@mipmap/loginimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:indicatorColor="@color/bigbutton"
+            app:indicatorName="BallPulseIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialTextField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_backgroundColor="@color/navigationbg"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView"
+            app:mtf_labelColor="@color/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/xuehao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="学号"
+                android:inputType="phone"
+                android:paddingLeft="20dp"
+                android:textSize="20sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialTextField2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="@+id/materialTextField"
+            app:layout_constraintStart_toStartOf="@+id/materialTextField"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextField"
+            app:mtf_backgroundColor="@color/navigationbg"
+            app:mtf_labelColor="@color/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:paddingLeft="20dp"
+                android:textSize="20sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="88dp"
+            android:text="登录"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextField2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardbt"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toTopOf="@+id/textView">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bigbutton">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/loginbt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/rightjt" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
