@@ -7,18 +7,10 @@
     name="noticevm"
     type="com.lzy.dadaschool.fragment.notice.NoticeViewModel" />
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragment.notice.NoticeFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/purple_700"
-            android:gravity="center"
-            android:text="课表" />
-
-    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
