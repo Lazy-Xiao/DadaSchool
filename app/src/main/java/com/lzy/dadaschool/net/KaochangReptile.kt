@@ -12,7 +12,7 @@ import java.net.URLEncoder
 import javax.inject.Inject
 import javax.security.auth.callback.Callback
     @Suppress("BlockingMethodInNonBlockingContext")
-    object LoginReptile {
+    object KaochangReptile {
         init {
             ReptileManager.timeout = 3000
             ReptileManager.cookieStore = DefaultCookieStore()
@@ -26,7 +26,7 @@ import javax.security.auth.callback.Callback
             return sb.toString()
         }
 
-        suspend fun login(username: String, password: String): DataBean {
+        suspend fun login(username: String, password: String): ArrayList<KaoshiTimeBean> {
             return withContext(Dispatchers.IO) {
                 try {
                     var response = Jsoup.newSession()
@@ -66,55 +66,57 @@ import javax.security.auth.callback.Callback
                                 .equals("该帐号不存在，请重新输入！") || response.statusCode() != 200
                         ) {
                             println("密码错误")
-                            return@withContext DataBean(
+                            return@withContext arrayListOf(KaoshiTimeBean(
                                 "未知",
                                 "未知",
                                 "未知",
                                 "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                arrayListOf(),-1
-                            )
+                                "未知","未知"))
                         } else {
-                            return@withContext DataBean(
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                arrayListOf(),1
-                            )
+                            var kaoshiTime: ArrayList<KaoshiTimeBean> = ArrayList()
+                            var response1 = response
+                            response1 = Jsoup.newSession()
+                                .url("http://jwmis.dzvtc.edu.cn/jiaoshi/xslm/kao/xuesheng")
+                                .timeout(ReptileManager.timeout)
+                                .headers(header)
+                                .cookies(ReptileManager.cookieStore.getCookies())
+                                .method(Connection.Method.GET)
+                                .data(data)
+                                .execute()
+                            response1.bodyAsBytes().let {
+                                val document = Jsoup.parse(String(it, charset("gb2312")))
+                                /*
+                            * 考试时间
+                            * */
+//            println(document.select("tbody").get(6).select("tr").select("[onmouseover]"))
+                                for (i in document.select("tbody")[5].select("tr")
+                                    .select("[onmouseover]")) {
+                                    kaoshiTime.add(
+                                        KaoshiTimeBean(
+                                            i.select("td")[4].text(),
+                                            i.select("td")[5].text(),
+                                            i.select("td")[6].text(),
+                                            i.select("td")[7].text(),
+                                            i.select("td")[8].text(),
+                                            i.select("td")[9].text()
+                                        )
+                                    )
+//                    print("科目：${i.select("td").get(4).text()}\t\t\t\t\t\t学期：${i.select("td").get(8).text()}\n")
+                                }
+                            }
+                            return@withContext kaoshiTime
                         }
                     }
 //            ReptileManager.cookieStore.putAll(response.cookies())
 
 
                 } catch (e: Exception) {
-                    return@withContext DataBean(
-                        e.toString(),
+                    return@withContext arrayListOf(KaoshiTimeBean(
                         "未知",
                         "未知",
                         "未知",
                         "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        arrayListOf(),-1
-                    )
+                        "未知","未知"))
                 }
 
             }

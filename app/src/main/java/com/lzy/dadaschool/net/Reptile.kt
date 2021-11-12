@@ -78,7 +78,7 @@ import javax.security.auth.callback.Callback
                                 "未知",
                                 "未知",
                                 "未知",
-                                arrayListOf(), arrayListOf(),-1
+                                arrayListOf(),-1
                             )
                         } else {
 
@@ -104,63 +104,7 @@ import javax.security.auth.callback.Callback
                                     xinxi.add(document.select(".g_body")[i].text())
 //                    print("${document.select(".g_body")[i].text()}     ")
                                 }
-                            }
-                            response1 = Jsoup.newSession()
-                                .url("http://jwmis.dzvtc.edu.cn/jiaoshi/xslm/cj/search.asp")
-                                .timeout(ReptileManager.timeout)
-                                .headers(header)
-                                .cookies(ReptileManager.cookieStore.getCookies())
-                                .method(Connection.Method.GET)
-                                .data(data)
-                                .execute()
-                            response1.bodyAsBytes().let {
-                                val document = Jsoup.parse(String(it, charset("gb2312")))
-                                /*
-                            * 考试成绩
-                            * */
-//            println(document.select("tbody").get(6).select("tr").select("[onmouseover]"))
-                                for (i in document.select("tbody").get(6).select("tr")
-                                    .select("[onmouseover]")) {
-                                    chengji.add(
-                                        ChengjiBean(
-                                            i.select("td").get(4).text(),
-                                            i.select("td").get(5).text(),
-                                            i.select("td").get(6).text(),
-                                            i.select("td").get(7).text(),
-                                            i.select("td").get(8).text()
-                                        )
-                                    )
-//                    print("科目：${i.select("td").get(4).text()}\t\t\t\t\t\t分数：${i.select("td").get(8).text()}\n")
-                                }
-                            }
-                            response1 = Jsoup.newSession()
-                                .url("http://jwmis.dzvtc.edu.cn/jiaoshi/xslm/kao/xuesheng")
-                                .timeout(ReptileManager.timeout)
-                                .headers(header)
-                                .cookies(ReptileManager.cookieStore.getCookies())
-                                .method(Connection.Method.GET)
-                                .data(data)
-                                .execute()
-                            response1.bodyAsBytes().let {
-                                val document = Jsoup.parse(String(it, charset("gb2312")))
-                                /*
-                            * 考试时间
-                            * */
-//            println(document.select("tbody").get(6).select("tr").select("[onmouseover]"))
-                                for (i in document.select("tbody")[5].select("tr")
-                                    .select("[onmouseover]")) {
-                                    kaoshiTime.add(
-                                        KaoshiTimeBean(
-                                            i.select("td")[4].text(),
-                                            i.select("td")[5].text(),
-                                            i.select("td")[6].text(),
-                                            i.select("td")[7].text(),
-                                            i.select("td")[8].text(),
-                                            i.select("td")[9].text()
-                                        )
-                                    )
-//                    print("科目：${i.select("td").get(4).text()}\t\t\t\t\t\t学期：${i.select("td").get(8).text()}\n")
-                                }
+
                             }
                             return@withContext DataBean(
                                 xinxi[0],
@@ -174,8 +118,11 @@ import javax.security.auth.callback.Callback
                                 xinxi[8],
                                 xinxi[9],
                                 xinxi[10],
-                                chengji,
-                                kaoshiTime,1
+                                getKeBiao(
+                                    response,
+                                    header,
+                                    data, "http://jwmis.dzvtc.edu.cn/jiaoshi/xslm/gongxuan/kai"
+                                ),1
                             )
                         }
                     }
@@ -195,7 +142,7 @@ import javax.security.auth.callback.Callback
                         "未知",
                         "未知",
                         "未知",
-                        arrayListOf(), arrayListOf(),-1
+                        arrayListOf(),-1
                     )
                 }
 

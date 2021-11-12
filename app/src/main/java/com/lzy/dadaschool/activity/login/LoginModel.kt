@@ -27,7 +27,7 @@ class LoginModel @ViewModelInject constructor(
             "未知",
             "未知",
             "未知",
-            arrayListOf(), arrayListOf(),0
+            arrayListOf(),0
         )
     }
     val data = _data

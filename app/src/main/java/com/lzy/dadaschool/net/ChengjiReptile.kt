@@ -12,7 +12,7 @@ import java.net.URLEncoder
 import javax.inject.Inject
 import javax.security.auth.callback.Callback
     @Suppress("BlockingMethodInNonBlockingContext")
-    object LoginReptile {
+    object ChengjiReptile {
         init {
             ReptileManager.timeout = 3000
             ReptileManager.cookieStore = DefaultCookieStore()
@@ -26,7 +26,7 @@ import javax.security.auth.callback.Callback
             return sb.toString()
         }
 
-        suspend fun login(username: String, password: String): DataBean {
+        suspend fun login(username: String, password: String): ArrayList<ChengjiBean> {
             return withContext(Dispatchers.IO) {
                 try {
                     var response = Jsoup.newSession()
@@ -66,55 +66,61 @@ import javax.security.auth.callback.Callback
                                 .equals("该帐号不存在，请重新输入！") || response.statusCode() != 200
                         ) {
                             println("密码错误")
-                            return@withContext DataBean(
+                            return@withContext arrayListOf(ChengjiBean(
                                 "未知",
                                 "未知",
                                 "未知",
                                 "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                arrayListOf(),-1
-                            )
+                                "未知"))
                         } else {
-                            return@withContext DataBean(
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                "成功",
-                                arrayListOf(),1
-                            )
+                            var chengji: ArrayList<ChengjiBean> = ArrayList()
+                            var response1 = response
+                            response1 = Jsoup.newSession()
+                                .url("http://jwmis.dzvtc.edu.cn/jiaoshi/xslm/cj/search.asp")
+                                .timeout(ReptileManager.timeout)
+                                .headers(header)
+                                .cookies(ReptileManager.cookieStore.getCookies())
+                                .method(Connection.Method.GET)
+                                .data(data)
+                                .execute()
+                            response1.bodyAsBytes().let {
+                                val document = Jsoup.parse(String(it, charset("gb2312")))
+                                /*
+                            * 考试成绩
+                            * */
+//            println(document.select("tbody").get(6).select("tr").select("[onmouseover]"))
+                                for (i in document.select("tbody").get(6).select("tr")
+                                    .select("[onmouseover]")) {
+                                    chengji.add(
+                                        ChengjiBean(
+                                            i.select("td").get(4).text(),
+                                            i.select("td").get(5).text(),
+                                            i.select("td").get(6).text(),
+                                            i.select("td").get(7).text(),
+                                            i.select("td").get(8).text()
+                                        )
+                                    )
+//                    print("科目：${i.select("td").get(4).text()}\t\t\t\t\t\t分数：${i.select("td").get(8).text()}\n")
+                                }
+                            }
+                            return@withContext arrayListOf(ChengjiBean(
+                                "未知",
+                                "未知",
+                                "未知",
+                                "未知",
+                                "未知"))
                         }
                     }
 //            ReptileManager.cookieStore.putAll(response.cookies())
 
 
                 } catch (e: Exception) {
-                    return@withContext DataBean(
-                        e.toString(),
+                    return@withContext arrayListOf(ChengjiBean(
                         "未知",
                         "未知",
                         "未知",
                         "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        "未知",
-                        arrayListOf(),-1
-                    )
+                        "未知"))
                 }
 
             }

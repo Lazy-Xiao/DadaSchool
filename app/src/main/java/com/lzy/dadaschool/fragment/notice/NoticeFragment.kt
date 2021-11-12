@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.lzy.dadaschool.R
+import com.lzy.dadaschool.activity.main.MainModel
 import com.lzy.dadaschool.databinding.MeFragmentBinding
 import com.lzy.dadaschool.databinding.NoticeFragmentBinding
 import com.lzy.dadaschool.fragment.me.MeViewModel
@@ -18,6 +19,7 @@ class NoticeFragment : BaseFragment<NoticeFragmentBinding>() {
     companion object {
         fun newInstance() = NoticeFragment()
     }
+    private lateinit var data: MainModel
 
     val viewModel: NoticeViewModel by viewModels()
 
@@ -26,11 +28,14 @@ class NoticeFragment : BaseFragment<NoticeFragmentBinding>() {
     override fun initdata() {
         binding = NoticeFragmentBinding.inflate(layoutInflater)
         binding!!.noticevm=viewModel
-
+        data = ViewModelProvider(requireActivity()).get(MainModel::class.java)
     }
 
     override fun initevent() {
 
+        binding?.timetableView?.data(data.data.value?.kebiao)
+            ?.curWeek(1)
+            ?.showView();
     }
 
 }

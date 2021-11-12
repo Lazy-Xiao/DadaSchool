@@ -4,7 +4,9 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lzy.dadaschool.data.DataBean
+import com.lzy.dadaschool.net.KeBiaoReptile
 import com.lzy.dadaschool.net.Reptile
+import com.zhuangfei.timetable.model.Schedule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,7 +19,7 @@ import kotlinx.coroutines.launch
 class MainModel @ViewModelInject constructor(
 ):ViewModel() {
     private var _data = MutableLiveData<DataBean>().apply {
-        value=DataBean(
+        value= DataBean(
             "未知",
             "未知",
             "未知",
@@ -29,7 +31,8 @@ class MainModel @ViewModelInject constructor(
             "未知",
             "未知",
             "未知",
-            arrayListOf(), arrayListOf(),0
+            arrayListOf(),
+            0
         )
     }
     val data = _data
@@ -39,4 +42,7 @@ class MainModel @ViewModelInject constructor(
         }
 
     }
+
+
+
 }

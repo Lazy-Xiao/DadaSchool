@@ -29,6 +29,10 @@ class MeFragment : BaseFragment<MeFragmentBinding>() {
     }
 
     override fun initevent() {
+        binding?.materialCardView1?.setOnClickListener {  }
+        binding?.materialCardView2?.setOnClickListener {  }
+        binding?.materialCardView3?.setOnClickListener {  }
+        binding?.materialCardView4?.setOnClickListener {  }
 
     }
 

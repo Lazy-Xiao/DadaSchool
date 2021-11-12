@@ -1,5 +1,7 @@
 package com.lzy.dadaschool.data
 
+import com.zhuangfei.timetable.model.Schedule
+
 /**
  *  @Description:
  *  @Author: 李钟意
@@ -17,8 +19,7 @@ data class DataBean (
     var zhuanye:String="",
     var xibu:String="",
     var zhuanyedaima:String="",
-    var chengji:ArrayList<ChengjiBean>,
-    var kaoshiTime:ArrayList<KaoshiTimeBean>,
+    var kebiao:ArrayList<Schedule>,
     var gan:Int=0
 ){
 }
