@@ -12,6 +12,6 @@ data class KaoshiTimeBean (
     var changci:String,
     var xueqi:String,
     var time:String,
-
+    var gan:Int=0
     ){
 }

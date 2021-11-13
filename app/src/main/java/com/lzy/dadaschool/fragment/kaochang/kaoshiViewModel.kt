@@ -18,7 +18,7 @@ class kaoshiViewModel : ViewModel() {
             "未知",
             "未知",
             "未知",
-            "未知","未知"
+            "未知","未知",0
         )
         )
     }

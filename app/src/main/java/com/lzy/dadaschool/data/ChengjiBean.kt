@@ -11,5 +11,7 @@ data class ChengjiBean (
     var xuefen : String="",
     var xueqi:String="",
     var fenshu:String="",
+    var gan:Int=0
+
         ){
 }

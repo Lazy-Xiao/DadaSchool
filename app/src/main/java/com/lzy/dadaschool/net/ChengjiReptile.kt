@@ -71,7 +71,7 @@ import javax.security.auth.callback.Callback
                                 "未知",
                                 "未知",
                                 "未知",
-                                "未知"))
+                                "未知",-1))
                         } else {
                             var chengji: ArrayList<ChengjiBean> = ArrayList()
                             var response1 = response
@@ -97,18 +97,13 @@ import javax.security.auth.callback.Callback
                                             i.select("td").get(5).text(),
                                             i.select("td").get(6).text(),
                                             i.select("td").get(7).text(),
-                                            i.select("td").get(8).text()
+                                            i.select("td").get(8).text(),1
                                         )
                                     )
 //                    print("科目：${i.select("td").get(4).text()}\t\t\t\t\t\t分数：${i.select("td").get(8).text()}\n")
                                 }
                             }
-                            return@withContext arrayListOf(ChengjiBean(
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知",
-                                "未知"))
+                            return@withContext chengji
                         }
                     }
 //            ReptileManager.cookieStore.putAll(response.cookies())
@@ -120,7 +115,7 @@ import javax.security.auth.callback.Callback
                         "未知",
                         "未知",
                         "未知",
-                        "未知"))
+                        "未知",-1))
                 }
 
             }

@@ -1,5 +1,6 @@
 package com.lzy.dadaschool.net
 
+import android.util.Log
 import com.lzy.dadaschool.net.store.DefaultCookieStore
 import com.sink.reptile.Kebiao
 import com.zhuangfei.timetable.model.Schedule
@@ -159,14 +160,16 @@ fun getKeBiao(
                                     kebiaoList.add(
                                         Schedule(
                                             i.kecheng,
-                                            "未知",
+                                            "",
                                             i.teacher,
-                                            arrayListOf(),
+                                            arrayListOf(1),
                                             j.substring(3, 4).toInt(),
-                                            j.substring(4, 5).toInt(), weeknum(j.substring(0, 3)),1
+//                                            j.substring(4, 5).toInt()
+                                            2
+                                            , weeknum(j.substring(0, 3)),3
                                         )
                                     )
-                                   /* println(
+                                    Log.i("aaaa",
                                         "科目：" +
                                                 i.kecheng +
                                                 j.substring(0, 3) +
@@ -175,25 +178,24 @@ fun getKeBiao(
                                                 "和第" +
                                                 j.substring(4, 5) +
                                                 "节"
-                                    )*/
+                                    )
                                 }
                                 7 -> {
 //                    println(j.substring(j.length - 2, j.length-1))
                                     if (j.substring(j.length - 2, j.length - 1).equals("0")) {
-
-
                                         kebiaoList.add(
                                             Schedule(
                                                 i.kecheng,
-                                                "未知",
+                                                "",
                                                 i.teacher,
-                                                arrayListOf(),
+                                                arrayListOf(1),
                                                 j.substring(3, 4).toInt(),
-                                                j.substring(4, 6).toInt(), weeknum(j.substring(0, 3)),1
+//                                                j.substring(4, 6).toInt()
+                                                2
+                                                , weeknum(j.substring(0, 3)),1
                                             )
                                         )
-
-                                     /*   println(
+                                        Log.i("aaaa",
                                             "科目：" +
                                                     i.kecheng +
                                                     j.substring(0, 3) +
@@ -202,21 +204,22 @@ fun getKeBiao(
                                                     "和第" +
                                                     j.substring(4, 6) +
                                                     "节"
-                                        )*/
+                                        )
                                     } else {
-
                                         kebiaoList.add(
                                             Schedule(
                                                 i.kecheng,
-                                                "未知",
+                                                "",
                                                 i.teacher,
-                                                arrayListOf(),
+                                                arrayListOf(1),
                                                 j.substring(3, 4).toInt(),
-                                                j.substring(5, 6).toInt(), weeknum(j.substring(0, 3)),1
+//                                                j.substring(5, 6).toInt()
+                                                3
+                                                , weeknum(j.substring(0, 3)),1
                                             )
                                         )
 
-                                       /* println(
+                                        Log.i("aaaa",
                                             "科目：" +
                                                     i.kecheng +
                                                     j.substring(0, 3) +
@@ -227,7 +230,7 @@ fun getKeBiao(
                                                     "节" +
                                                     "和第" +
                                                     j.substring(5, 6) + "节"
-                                        )*/
+                                        )
                                     }
 
                                 }
@@ -238,6 +241,9 @@ fun getKeBiao(
                 }
             }
         }
+    }
+    for (i in kebiaoList){
+        Log.i("bbbb",i.day.toString()+"//"+i.start.toString()+"//"+i.step)
     }
     return kebiaoList
 }

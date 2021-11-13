@@ -31,7 +31,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         binding = HomeFragmentBinding.inflate(layoutInflater)
         binding!!.homevm = viewModel
          data = ViewModelProvider(requireActivity()).get(MainModel::class.java)
-
     }
 
     override fun initevent() {

@@ -18,7 +18,7 @@ class ChengjiViewModel : ViewModel() {
             "未知",
             "未知",
             "未知",
-            "未知"
+            "未知",0
         ))
     }
     val data = _data
