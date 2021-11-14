@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lzy.dadaschool.R
-import com.lzy.dadaschool.adapter.miniKeBiaoAdapter.ViewHolder
+import com.lzy.dadaschool.data.miniKechengBean
+import com.zhuangfei.timetable.model.Schedule
 
-class miniKeBiaoAdapter(a:ArrayList<String>) : RecyclerView.Adapter<miniKeBiaoAdapter.ViewHolder>() {
+class miniKeBiaoAdapter(val minikebiao: ArrayList<miniKechengBean>) : RecyclerView.Adapter<miniKeBiaoAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val kechengName: TextView=itemView.findViewById(R.id.kecheng)
@@ -24,11 +25,10 @@ class miniKeBiaoAdapter(a:ArrayList<String>) : RecyclerView.Adapter<miniKeBiaoAd
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("Not yet implemented")
-
-
-
+        holder.kechengTime.text=minikebiao[position].kechengtime
+        holder.kechengName.text=minikebiao[position].kecheng
     }
 
-    override fun getItemCount(): Int =0
+    override fun getItemCount(): Int =minikebiao.size
 
 }

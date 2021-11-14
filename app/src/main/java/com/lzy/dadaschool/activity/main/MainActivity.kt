@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             sharedPreference.getString("password", "").toString()
         )
         mainModel.data.observe(this, Observer {
-            Toast.makeText(this, it.gan.toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, it.gan.toString(), Toast.LENGTH_SHORT).show()
             when (it.gan) {
                 -1 -> {
                     val intent = Intent()

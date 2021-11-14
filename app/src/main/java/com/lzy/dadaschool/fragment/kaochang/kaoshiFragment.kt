@@ -78,9 +78,7 @@ class kaoshiFragment : BaseFragment<KaoshiFragmentBinding>() {
                 }
             }
         })
-
     }
-
     private fun showView() {
         var groupList: List<String> = ArrayList()
         var _groupList: ArrayList<String> = ArrayList()
