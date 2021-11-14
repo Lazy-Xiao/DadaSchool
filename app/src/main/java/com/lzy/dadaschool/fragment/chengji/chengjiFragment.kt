@@ -48,7 +48,7 @@ class chengjiFragment : BaseFragment<ChengjiFragmentBinding>() {
             sharedPreference?.getString("password", "").toString()
         )
         data.data.observe(this, Observer {
-            Toast.makeText(context, it[0].gan.toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, it[0].gan.toString(), Toast.LENGTH_SHORT).show()
             when (it[0].gan) {
                 -1 -> {
                     val intent = Intent()

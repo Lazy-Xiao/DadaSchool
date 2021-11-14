@@ -27,6 +27,8 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
     private lateinit var data: MainModel
     val viewModel: HomeViewModel by viewModels()
     val minikebiaolist = ArrayList<miniKechengBean>()
+    val minikebiaolist2 = ArrayList<miniKechengBean>()
+
     override fun getviews(): View = HomeFragmentBinding.inflate(layoutInflater).root
 
     override fun initdata() {
@@ -47,8 +49,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
 
         val week = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1
         val df = SimpleDateFormat("HH.mm") //设置日期格式
-
-
 //        Toast.makeText(activity,minikebiaolist[0].kecheng,Toast.LENGTH_SHORT).show()
         data.data.observe(requireActivity(), Observer {
             if (it.gan == 1) {
@@ -58,26 +58,36 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
                 }
                 val layoutManager = LinearLayoutManager(context)
                 layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                binding!!.miniKeBiao.setLayoutManager(layoutManager);
-                binding!!.miniKeBiao.adapter = miniKeBiaoAdapter(minikebiaolist)
-                Toast.makeText(context,df.format(Date()),Toast.LENGTH_SHORT).show()
+                binding!!.miniKeBiao.setLayoutManager(layoutManager)
+                minikebiaolist.reverse()
+                val a=df.format(Date()).toDouble()
+               for (i in minikebiaolist.stream().filter { u -> u.kechengtime.toInt() > a }
+                   .collect(Collectors.toList())) {
+                   minikebiaolist2.add(i)
+               }
+                if (minikebiaolist2.size<=0){
+                    minikebiaolist2.add(miniKechengBean("今日已无课",0.00))
+                }
+              minikebiaolist2.sortBy { it.kechengtime }
+                binding!!.miniKeBiao.adapter = miniKeBiaoAdapter(minikebiaolist2)
+//                Toast.makeText(context, df.format(Date()), Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    fun timesx(i: Int): String {
+    fun timesx(i: Int): Double {
         return when (i) {
-            1 -> 8.30.toString()
-            2 -> 9.20.toString()
-            3 -> 10.20.toString()
-            4 -> 11.10.toString()
-            5 -> 14.40.toString()
-            6 -> 15.30.toString()
-            7 -> 16.20.toString()
-            8 -> 17.10.toString()
-            9 -> 19.30.toString()
-            10 -> 20.20.toString()
-            else -> 0.toString()
+            1 -> 8.30
+            2 -> 9.20
+            3 -> 10.20
+            4 -> 11.10
+            5 -> 14.40
+            6 -> 15.30
+            7 -> 16.20
+            8 -> 17.10
+            9 -> 19.30
+            10 -> 20.20
+            else -> 0.00
         }
 
     }

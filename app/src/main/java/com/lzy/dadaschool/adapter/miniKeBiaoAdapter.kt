@@ -25,7 +25,7 @@ class miniKeBiaoAdapter(val minikebiao: ArrayList<miniKechengBean>) : RecyclerVi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("Not yet implemented")
-        holder.kechengTime.text=minikebiao[position].kechengtime
+        holder.kechengTime.text=minikebiao[position].kechengtime.toString()+"0"
         holder.kechengName.text=minikebiao[position].kecheng
     }
 
